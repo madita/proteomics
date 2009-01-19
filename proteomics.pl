@@ -78,7 +78,7 @@ sub getCalcMasses{
 					"X" => 110,
 					"Z" => 110,
 					"B" => 110			);
-	my @as;	my $tmp;	my @calcMasses;
+	my @as;	my @calcMasses;
 	
 	for(my $i=0;$i<=$#tryp;$i++){
 		@as=split("", $tryp[$i]);
