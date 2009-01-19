@@ -2,6 +2,8 @@
 
 use strict;
 
+my $sequenz;
+my @tryp;
 
 local $/ = "\n";
 open(FILE, "<human") || die ("Fehler beim Öffnen der Datei \n");					
@@ -11,9 +13,22 @@ close(FILE);
 for (my $cnt = 0; $cnt < $#linearr; $cnt++ ) {
 	
 	if ($linearr[$cnt] =~ />/) {
-		trypsincut($cnt);
-	
+		$sequenz = merge_seq($cnt);
+		@tryp = trypsincut($sequenz);
 	}	
+
+}
+
+sub merge_seq {
+my ($start) = $_[0];
+my $sequenz = "";
+
+ for (my $cnt = ($start+1); $cnt < $#linearr; $cnt++ ) {
+	$sequenz = $sequenz.$linearr[$cnt];
+	if ($linearr[$start] =~ />/) {
+		last;
+	}
+ }
 
 }
 
@@ -27,5 +42,7 @@ $start = $_[0];
 		last;
 	}
  }
+
+return @tryp;
 }
-#dsdfsdfs
+
