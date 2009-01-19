@@ -11,7 +11,7 @@ close(FILE);
 for (my $cnt = 0; $cnt < $#linearr; $cnt++ ) {
 	
 	if ($linearr[$cnt] =~ />/) {
-		
+		trypsincut($cnt);
 	
 	}	
 
@@ -22,9 +22,10 @@ sub trypsincut{
 my $start;
 my @tryp;
 $start = $_[0];
-#my ($searchline) = $_[1];
-print "$start\n";
-
-if ($linearr[$start] =~ />/) 
+ for (my $cnt = $start; $cnt < $#linearr; $cnt++ ) {
+	if ($linearr[$start] =~ />/) {
+		last;
+	}
+ }
 }
 
