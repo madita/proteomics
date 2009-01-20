@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-#komment
+#komment...
 use strict;
 
 my $sequenz;
