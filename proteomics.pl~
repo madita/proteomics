@@ -41,11 +41,13 @@ $sequenz =~ s/K/K1/g;
 $sequenz =~ s/RP/2/g;
 $sequenz =~ s/R/R1/g;
 my (@tryp) = split("1", $sequenz);
+my (@tryp_copy) = @tryp;
 
-  for (my $cnt = 0; $cnt < $#tryp; $cnt++ ) {
-	if ($tryp[$cnt] =~ /2/) {
-		my (@temp) = split("3", $tryp[$cnt]);
-		$tryp[$cnt] =~ s/2/RP/g;	
+  for (my $cnt = 0; $cnt < $#tryp_copy; $cnt++ ) {
+	if ($tryp_copy[$cnt] =~ /2/) {
+		my (@temp) = split("3", $tryp_copy[$cnt]);
+		$tryp_copy[$cnt] =~ s/2/RP/g;
+		push(@tryp,@temp);
 	}
 	
   }
@@ -54,7 +56,7 @@ return @tryp;
 }
 
 sub getCalcMasses{
-	my @tryp=$_[0];
+	my @tryp=@_;
 	my %asMasses=(	"A" => 71.07884,
 					"C" => 103.14484,
 					"D" => 115.08864,

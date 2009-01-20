@@ -37,20 +37,11 @@ my $sequenz = "";
 sub trypsincut{
 
 my ($sequenz) = $_[0];
-$sequenz =~ s/K/K1/g;
 $sequenz =~ s/RP/2/g;
+$sequenz =~ s/K/K1/g;
 $sequenz =~ s/R/R1/g;
+$sequenz =~ s/2/RP/g;
 my (@tryp) = split("1", $sequenz);
-my (@tryp_copy) = @tryp;
-
-  for (my $cnt = 0; $cnt < $#tryp_copy; $cnt++ ) {
-	if ($tryp_copy[$cnt] =~ /2/) {
-		my (@temp) = split("3", $tryp_copy[$cnt]);
-		$tryp_copy[$cnt] =~ s/2/RP/g;
-		push(@tryp,@temp);
-	}
-	
-  }
 
 return @tryp;
 }
